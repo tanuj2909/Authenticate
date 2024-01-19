@@ -3,6 +3,8 @@ import { Comic_Neue } from 'next/font/google'
 import './globals.css'
 import { SessionProvider } from 'next-auth/react'
 import { auth } from '@/auth'
+import { Toaster } from '@/components/ui/sonner'
+
 const font = Comic_Neue({
   subsets: ["latin"],
   weight: ["700"]
@@ -24,7 +26,10 @@ export default async function RootLayout({
   return (
     <SessionProvider session={session}>
       <html lang="en">
-        <body className={font.className}>{children}</body>
+        <body className={font.className}>
+          <Toaster />
+          {children}
+        </body>
       </html>
     </SessionProvider>
     
